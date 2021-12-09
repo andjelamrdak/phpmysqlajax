@@ -21,6 +21,10 @@
         <div class="grupa">
             <button id="dodajZaposlenog" class="btn btn-success btn-lg" data-bs-toggle="modal" data-bs-target="#noviZaposleni">Dodaj</button>
 
+            <div class="alert alert-success collapse text-center" role="alert" id="uspesnoObrisan">
+
+            </div>
+
             <div id="tabelaZaposleni">
                 <!-- Tabela iz prikaz.php -->
             </div>
@@ -36,6 +40,12 @@
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
+                        <div class="alert alert-danger collapse text-center" role="alert" id="praznaPolja">
+                            Sva polja moraju biti popunjena!
+                        </div>
+
+                        <div class="alert alert-success collapse text-center" role="alert" id="uspesnoSacuvan">
+                        </div>
 
                         <div class="mb-2">
                             <label for="addime" class="form-label">Ime: </label>
