@@ -91,43 +91,53 @@
                     </div>
                     <div class="modal-body">
 
-                        <div class="mb-2">
-                            <label for="upd_ime" class="form-label">Ime: </label>
-                            <input type="text" class="form-control" id="upd_ime">
-                        </div>
-                        <div class="mb-2">
-                            <label for="upd_prezime" class="form-label">Prezime: </label>
-                            <input type="text" class="form-control" id="upd_prezime">
-                        </div>
-                        <div class="mb-2">
-                            <label for="upd_plata" class="form-label">Plata: </label>
-                            <input type="number" class="form-control" id="upd_plata">
-                        </div>
-                        <div class="mb-2">
-                            <label for="upd_kompanija" class="form-label">Kompanija: </label>
-                            <select name="kompanija" id="upd_kompanija" class="form-select">
-                                <?php
-                                $query = "select * from kompanija";
-                                $data = $db->connection->query($query);
+                        <div class="modal-body">
+                            <div class="alert alert-danger collapse text-center" role="alert" id="upd_praznaPolja">
+                                Sva polja moraju biti popunjena!
+                            </div>
 
-                                while ($row = $data->fetch_object()) :
-                                ?>
-                                    <option value="<?php echo $row->id; ?>"><?php echo $row->naziv; ?></option>
-                                <?php endwhile; ?>
-                            </select>
+                            <div class="alert alert-success collapse text-center" role="alert" id="upd_uspesnoSacuvan">
+                            </div>
+
+                            <input type="hidden" id="zaposleni_id">
+
+                            <div class="mb-2">
+                                <label for="upd_ime" class="form-label">Ime: </label>
+                                <input type="text" class="form-control" id="upd_ime">
+                            </div>
+                            <div class="mb-2">
+                                <label for="upd_prezime" class="form-label">Prezime: </label>
+                                <input type="text" class="form-control" id="upd_prezime">
+                            </div>
+                            <div class="mb-2">
+                                <label for="upd_plata" class="form-label">Plata: </label>
+                                <input type="number" class="form-control" id="upd_plata">
+                            </div>
+                            <div class="mb-2">
+                                <label for="upd_kompanija" class="form-label">Kompanija: </label>
+                                <select name="kompanija" id="upd_kompanija" class="form-select">
+                                    <?php
+                                    $query = "select * from kompanija";
+                                    $data = $db->connection->query($query);
+
+                                    while ($row = $data->fetch_object()) :
+                                    ?>
+                                        <option value="<?php echo $row->id; ?>"><?php echo $row->naziv; ?></option>
+                                    <?php endwhile; ?>
+                                </select>
+                            </div>
                         </div>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" id="btn_update" class="btn btn-primary">Sacuvaj izmene</button>
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Zatvori</button>
+                        <div class="modal-footer">
+                            <button type="button" id="btn_update" class="btn btn-primary">Sacuvaj izmene</button>
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Zatvori</button>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
 
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
-        <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-        <script src="zaposleni.js"></script>
+            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
+            <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+            <script src="zaposleni.js"></script>
 
 </body>
 

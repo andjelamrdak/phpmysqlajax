@@ -2,6 +2,8 @@ $(document).ready(function () {
     prikaziZaposlene();
     dodajZaposlenog();
     obrisiZaposlenog();
+    vratiZaposlenog();
+    azurirajZaposlenog();
 });
 
 
@@ -73,4 +75,66 @@ function obrisiZaposlenog() {
             }
         })
     })
+}
+
+function vratiZaposlenog() {
+
+    $(document).on('click', '#btn_edit', function () {
+
+        var id = $(this).attr('value');
+
+        $.ajax({
+            url: 'get.php',
+            method: 'post',
+            data: { id: id },
+            dataType: 'json',
+
+            success: function (data) {
+                $('#izmenaZaposlenog').modal('show');
+                $('#zaposleni_id').val(data.id);
+                $('#upd_ime').val(data.ime);
+                $('#upd_prezime').val(data.prezime);
+                $('#upd_plata').val(data.plata);
+                $('#upd_kompanija').val(data.kompanija_id);
+            }
+        });
+    })
+
+}
+
+
+function azurirajZaposlenog() {
+
+    $(document).on('click', '#btn_update', function () {
+
+
+        var id = $('#zaposleni_id').val();
+        var ime = $('#upd_ime').val();
+        var prezime = $('#upd_prezime').val();
+        var plata = $('#upd_plata').val();
+        var kompanija = $('#upd_kompanija').val();
+
+        if (id == '' || ime == '' || prezime == '' || plata == '' || kompanija == '') {
+            $('#upd_praznaPolja').slideDown().delay(1500).fadeOut('slow');
+        }
+        else {
+
+            $.ajax({
+                url: 'update.php',
+                method: 'post',
+                data: {
+                    id: id,
+                    ime: ime,
+                    prezime: prezime,
+                    plata: plata,
+                    kompanija: kompanija,
+                },
+
+                success: function (data) {
+                    $('#upd_uspesnoSacuvan').fadeIn().html(data).delay(1800).fadeOut('slow');
+                    prikaziZaposlene();
+                }
+            })
+        }
+    });
 }
