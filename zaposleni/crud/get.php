@@ -1,7 +1,7 @@
 <?php
 
-require 'DB.php';
-require 'zaposleni.php';
+require '../../DB.php';
+require '../Zaposleni.php';
 $db = new DB('zaposleni_kompanije');
 
 $id = $_POST['id'];

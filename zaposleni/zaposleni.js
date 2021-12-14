@@ -4,6 +4,9 @@ $(document).ready(function () {
     obrisiZaposlenog();
     vratiZaposlenog();
     azurirajZaposlenog();
+    pretraga();
+    napuniSortTabelu();
+    sortiranje();
 });
 
 
@@ -11,7 +14,7 @@ function prikaziZaposlene() {
 
     $.ajax(
         {
-            url: 'prikaz.php',
+            url: 'crud/prikaz.php',
             success: function (data) {
                 {
                     $('#tabelaZaposleni').html(data);
@@ -37,7 +40,7 @@ function dodajZaposlenog() {
         else {
             $.ajax(
                 {
-                    url: 'save.php',
+                    url: 'crud/save.php',
                     method: 'post',
                     data: { ime: ime, prezime: prezime, plata: plata, kompanija: kompanija },
 
@@ -65,7 +68,7 @@ function obrisiZaposlenog() {
         var id = $(this).attr('value');
 
         $.ajax({
-            url: 'delete.php',
+            url: 'crud/delete.php',
             method: 'post',
             data: { id: id },
 
@@ -84,7 +87,7 @@ function vratiZaposlenog() {
         var id = $(this).attr('value');
 
         $.ajax({
-            url: 'get.php',
+            url: 'crud/get.php',
             method: 'post',
             data: { id: id },
             dataType: 'json',
@@ -120,7 +123,7 @@ function azurirajZaposlenog() {
         else {
 
             $.ajax({
-                url: 'update.php',
+                url: 'crud/update.php',
                 method: 'post',
                 data: {
                     id: id,
@@ -137,4 +140,65 @@ function azurirajZaposlenog() {
             })
         }
     });
+}
+
+
+function pretraga() {
+
+    $(document).on('keyup', '#bar', function () {
+
+        var key = this.value;
+
+        $.ajax(
+            {
+                url: 'search.php',
+                method: 'post',
+                data: { key: key },
+                success: function (data) {
+                    {
+                        $('#searchtabela').html(data);
+                    }
+                }
+            }
+        )
+
+    })
+}
+
+function napuniSortTabelu() {
+    $.ajax(
+        {
+            url: 'prikazPocetniSort.php',
+            success: function (data) {
+                {
+                    $('#tabelasort').html(data);
+                }
+            }
+        }
+    )
+}
+
+
+function sortiranje() {
+
+    $(document).on('click', 'th', function () {
+
+        let kolona = $(this).attr('id');
+        let sort = $(this).attr('name');
+
+        $.ajax(
+            {
+                url: 'sort.php',
+                method: 'post',
+                data: { kolona: kolona, sort: sort },
+                success: function (data) {
+                    {
+                        $('#tabelasort').html(data);
+                    }
+                }
+            }
+        )
+
+    })
+
 }
