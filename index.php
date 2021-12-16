@@ -20,7 +20,7 @@
             <a href="zaposleni/index.php"><button class="btn btn-primary" id="crudzaposleni">Zaposleni CRUD operacije</button></a>
             <a href="zaposleni/pretraga/pretraga.php"><button class="btn btn-success" id="pretragazaposleni">Pretraga zaposlenih</button></a>
             <a href="zaposleni/sortiranje/sortiranje.php"><button class="btn btn-info" id="sortiranjezaposleni">Sortiranje zaposlenih</button></a>
-            <button class="btn btn-danger" id="crudkompanije">Kompanija CRUD operacije</button>
+            <a href="kompanija/index.php"><button class="btn btn-danger" id="crudkompanije">Kompanija CRUD operacije</button></a>
         </div>
 
     </div>
