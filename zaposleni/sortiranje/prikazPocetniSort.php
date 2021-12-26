@@ -11,7 +11,7 @@ $db = new DB('zaposleni_kompanije');
             <th id="ime" name="asc">Ime</th>
             <th id="prezime" name="asc">Prezime</th>
             <th id="plata" name="asc">Plata - RSD</th>
-            <th id="kompanija_id" name="asc">Kompanija</th>
+            <th id="naziv" name="asc">Kompanija</th>
         </tr>
     </thead>
 

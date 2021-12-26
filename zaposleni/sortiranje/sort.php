@@ -31,7 +31,7 @@ $sort = $_POST['sort'];
                                     } else {
                                         echo 'asc';
                                     } ?>">Plata - RSD</th>
-            <th id="kompanija_id" name="<?php if ($kolona == 'kompanija_id' && $sort == 'asc') {
+            <th id="naziv" name="<?php if ($kolona == 'naziv' && $sort == 'asc') {
                                             echo 'desc';
                                         } else {
                                             echo 'asc';
